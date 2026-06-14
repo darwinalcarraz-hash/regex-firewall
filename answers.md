@@ -41,5 +41,9 @@
 **Explanation:** I used a character-class range `0[0-2]` to match hours 00, 01, and 02. The `^[0-9-]+` anchors the date at the start of the line, and the space after it ensures the time comes right after the date. The `:[0-9]{2}:[0-9]{2}` matches the minutes and seconds with exactly 2 digits each. This covers the full window from 00:00:00 to 02:59:59. The `-c` counts and `-E` enables extended regex.
 
 ## Bonus
-**Regex:** 
-**Explanation:** 
+**Regex:** `^[^ ]+$`
+**Result:** 
+webhost001
+webhost002
+proxy_07
+**Explanation:** I used a negated character class `[^ ]` with the `+` quantifier to match one or more characters that are NOT spaces. The `^` and `$` anchors ensure the entire line has no spaces anywhere. To test it, I created a temporary file `test_bonus.txt` with the four lines and ran `grep -E '^[^ ]+$' test_bonus.txt`. It matched the three valid host names but rejected `that server is broken` because it contains spaces. The `wc -l` confirmed exactly 3 matches.
