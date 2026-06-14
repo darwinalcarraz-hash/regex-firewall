@@ -1,9 +1,9 @@
 # Lab - Regex Firewall Solutions
 
 ## Task 1 - Count Events
-**Command:** 
-**Result:** 
-**Explanation:** 
+**Command:** `grep -cE '^[^#]' firewall.log`
+**Result:** `100000`
+**Explanation:** I used `^` to anchor at the start of the line, and `[^#]` is a negated character class that matches any character except `#`. This skips the 4 header lines that start with `#` and counts only the actual event lines. The `-c` flag tells grep to count matches instead of printing them, and `-E` enables extended regex.
 
 ## Task 2 - Blocked Traffic
 **Command:** 
