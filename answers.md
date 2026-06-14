@@ -6,9 +6,9 @@
 **Explanation:** I used `^` to anchor at the start of the line, and `[^#]` is a negated character class that matches any character except `#`. This skips the 4 header lines that start with `#` and counts only the actual event lines. The `-c` flag tells grep to count matches instead of printing them, and `-E` enables extended regex.
 
 ## Task 2 - Blocked Traffic
-**Command:** 
-**Result:** 
-**Explanation:** 
+**Command:** `grep -cE ' (DROP|REJECT) ' firewall.log`
+**Result:** `60156`
+**Explanation:** I used `(DROP|REJECT)` with the alternation operator `|` inside a group `()` to match either action. The spaces around it ` (DROP|REJECT) ` anchor the match to the action field, so it doesn't accidentally match those letters in other fields like IP addresses. The `-c` counts the lines and `-E` enables extended regex.
 
 ## Task 3 - Source Subnet
 **Command:** 
