@@ -36,9 +36,9 @@
 **Explanation:** I combined three literal fields in one regex: ` ACCEPT` matches the action, ` TCP` matches the protocol, and ` 80` matches the destination port. The `.*` allows anything in between (IPs and src-port). The `[0-9]+$` anchor at the end ensures that `80` is the dst-port (second-to-last field) and not the src-port, because after `80` must come a space, the size digits, and the end of line. The `-c` counts and `-E` enables extended regex.
 
 ## Task 7 - Time Window
-**Command:** 
-**Result:** 
-**Explanation:** 
+**Command:** `grep -cE '^[0-9-]+ 0[0-2]:[0-9]{2}:[0-9]{2}' firewall.log`
+**Result:** `13138`
+**Explanation:** I used a character-class range `0[0-2]` to match hours 00, 01, and 02. The `^[0-9-]+` anchors the date at the start of the line, and the space after it ensures the time comes right after the date. The `:[0-9]{2}:[0-9]{2}` matches the minutes and seconds with exactly 2 digits each. This covers the full window from 00:00:00 to 02:59:59. The `-c` counts and `-E` enables extended regex.
 
 ## Bonus
 **Regex:** 
