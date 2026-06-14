@@ -31,9 +31,9 @@
 **Explanation:** I used `sed -E` with capture groups to extract only the date, action, and protocol. `([0-9-]+)` captures the date, `([0-9:]+)` captures the time (ignored), `([A-Z]+)` captures the action, and `([A-Z]+)` captures the protocol. The `.*` ignores the rest. The backreferences `\1`, `\3`, `\4` rebuild the line as `date action protocol`. I piped through `grep -v '^#'` to skip headers and `head -5` to show only the first 5 lines.
 
 ## Task 6 - Real Metric
-**Command:** 
-**Result:** 
-**Explanation:** 
+**Command:** `grep -cE ' ACCEPT TCP .* 80 [0-9]+$' firewall.log`
+**Result:** `93`
+**Explanation:** I combined three literal fields in one regex: ` ACCEPT` matches the action, ` TCP` matches the protocol, and ` 80` matches the destination port. The `.*` allows anything in between (IPs and src-port). The `[0-9]+$` anchor at the end ensures that `80` is the dst-port (second-to-last field) and not the src-port, because after `80` must come a space, the size digits, and the end of line. The `-c` counts and `-E` enables extended regex.
 
 ## Task 7 - Time Window
 **Command:** 
