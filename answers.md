@@ -16,9 +16,9 @@
 **Explanation:** I used `11\.` where the backslash escapes the dot so it's treated as a literal dot, not as the regex "any character" metacharacter. The leading space ` 11\.` anchors it to the src-ip field (the 5th field), making sure I don't match something like `211.100` in another field. The `-c` counts and `-E` enables extended regex.
 
 ## Task 4 - Large Packets
-**Command:** 
-**Result:** 
-**Explanation:** 
+**Command:** `grep -cE ' [0-9]{7}$' firewall.log`
+**Result:** `2343`
+**Explanation:** I used `[0-9]{7}` with the quantifier `{7}` to match exactly 7 digits, which means the size is at least 1,000,000. The space before it anchors to the size field (the last field), and the `$` anchor ensures it matches the end of the line so I don't accidentally match 7 digits in the middle of another field. The `-c` counts and `-E` enables extended regex.
 
 ## Task 5 - Reformat Lines
 **Command:** 
